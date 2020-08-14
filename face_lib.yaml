@@ -1,0 +1,7 @@
+FACE_LIB:
+  DB_NAME: 'Face_lib'
+  COL_NAME: 'face'
+PET_ENGINE:
+  USE_ENGINE: True
+  PATH: '../Pet-engine'
+  CFG: '../Pet-engine/cfgs/face.yaml'
