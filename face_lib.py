@@ -117,11 +117,11 @@ class FaceSingleDB:
         if feature is not None:
             update_dict['feature'] = feature
             idx = self.face_id_list.index(face_id)
-            self.face_features[idx] = feature
+            self.face_features[idx] = torch.as_tensor(feature).cuda()
         if model is not None:
             update_dict['model'] = model
-        if path is not None:
-            update_dict['score'] = score
+        if score is not None:
+            update_dict['score'] = float(score)
         self.face_db.face_col.update_one({'face_id': face_id}, {'$set': update_dict})
         person_id = self.face_db.face_col.find({'face_id': face_id})[0]['person_id']
         self.update_person(person_id)
